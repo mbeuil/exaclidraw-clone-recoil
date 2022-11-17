@@ -1,5 +1,6 @@
-import { Square } from 'react-feather';
 import { Icon, IconButton, VStack } from '@chakra-ui/react';
+
+import { Square } from 'react-feather';
 
 export const Toolbar = () => {
   return (

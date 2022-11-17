@@ -1,5 +1,5 @@
 import { DraggableCore } from 'react-draggable';
-import { ElementStyle } from '@/types/element';
+import { ElementStyle } from '/types/element';
 
 interface DragProps {
   position: ElementStyle['position'];

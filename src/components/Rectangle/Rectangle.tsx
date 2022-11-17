@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import * as React from 'react';
 import { RectangleContainer } from './RectangleContainer';
 import { RectangleInner } from './RectangleInner';
 
 export function Rectangle() {
-  const [element] = useState({
+  const [element] = React.useState({
     style: {
       position: { top: 100, left: 100 },
       size: { width: 100, height: 100 },

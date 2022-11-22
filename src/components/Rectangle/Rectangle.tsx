@@ -1,23 +1,38 @@
-import * as React from 'react';
-import { RectangleContainer } from './RectangleContainer';
+import { motion, useMotionValue } from 'framer-motion';
+import { useRecoilState } from 'recoil';
+
+import { elementFamily, selectedElementAtom } from '_/store/atoms';
+
 import { RectangleInner } from './RectangleInner';
 
-export function Rectangle() {
-  const [element] = React.useState({
-    style: {
-      position: { top: 100, left: 100 },
-      size: { width: 100, height: 100 },
-    },
-  });
+interface RectangleProps {
+  id: number;
+}
+
+export const Rectangle = ({ id }: RectangleProps) => {
+  const [selectedElement, setSelectedElement] = useRecoilState(selectedElementAtom);
+  const [element, setElement] = useRecoilState(elementFamily(id));
+  const x = useMotionValue(element.style.position.x);
+  const y = useMotionValue(element.style.position.y);
+  const width = useMotionValue(element.style.size.width);
+  const height = useMotionValue(element.style.size.height);
 
   return (
-    <RectangleContainer
-      position={element.style.position}
-      size={element.style.size}
-      onSelect={() => {
-        console.log("I've been selected!");
+    <motion.div
+      drag
+      dragMomentum={false}
+      style={{ x, y, width, height }}
+      onMouseDown={() => setSelectedElement(id)}
+      onClick={(e) => e.stopPropagation()}
+      onDragEnd={() => {
+        setElement({
+          style: {
+            ...element.style,
+            position: { x: x.get(), y: y.get() },
+          },
+        });
       }}>
-      <RectangleInner selected={false} />
-    </RectangleContainer>
+      <RectangleInner selected={id === selectedElement} />
+    </motion.div>
   );
-}
+};

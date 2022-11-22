@@ -1,15 +1,5 @@
-import { PageContainer } from '/components/PageContainer/PageContainer';
-import { Rectangle } from '/components/Rectangle/Rectangle';
-import { Toolbar } from '/components/ToolBar/Tollbar';
+import { Canvas } from '_/components/Canvas/Canvas';
 
 export default function Home() {
-  return (
-    <PageContainer
-      onClick={() => {
-        console.log('Deselect all elements!');
-      }}>
-      <Toolbar />
-      <Rectangle />
-    </PageContainer>
-  );
+  return <Canvas />;
 }

@@ -1,7 +1,8 @@
 import { Resizable, ResizeHandle } from 'react-resizable';
 
+import { ElementStyle } from '_/types/element';
+
 import { Handle } from './Handle';
-import { ElementStyle } from '/types/element';
 
 const handlePlacements: ResizeHandle[] = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'];
 
@@ -33,8 +34,8 @@ export function Resize({ selected, children, position, size, onResize }: ResizeP
             height: Math.round(size.height),
           },
           position: {
-            top: position.top + topDiff,
-            left: position.left + leftDiff,
+            x: position.x + leftDiff,
+            y: position.y + topDiff,
           },
         });
       }}

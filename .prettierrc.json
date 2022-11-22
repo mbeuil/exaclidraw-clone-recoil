@@ -15,5 +15,8 @@
   "trailingComma": "all",
   "useTabs": false,
   "bracketSpacing": true,
-  "jsxBracketSameLine": false
+  "jsxBracketSameLine": false,
+  "importOrder": ["^react$", "<THIRD_PARTY_MODULES>", "^[_/]", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

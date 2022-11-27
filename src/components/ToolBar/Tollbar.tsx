@@ -1,14 +1,19 @@
 import { Icon, IconButton, VStack } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 import { Square } from 'react-feather';
 import { useSetRecoilState } from 'recoil';
 
 import { elementsAtom } from '_/store/atoms';
 
+const ToolBarContainer = styled(VStack)`
+  position: fixed;
+`;
+
 export const Toolbar = () => {
   const setElements = useSetRecoilState(elementsAtom);
 
   return (
-    <VStack
+    <ToolBarContainer
       position="absolute"
       top="20px"
       left="20px"
@@ -17,6 +22,7 @@ export const Toolbar = () => {
       boxShadow="md"
       borderRadius="md"
       spacing={2}
+      objectPosition="fixed"
       zIndex={999}>
       <IconButton
         onClick={() => {
@@ -25,6 +31,6 @@ export const Toolbar = () => {
         aria-label="Add rectangle"
         icon={<Icon style={{ width: 24, height: 24 }} as={Square} />}
       />
-    </VStack>
+    </ToolBarContainer>
   );
 };
